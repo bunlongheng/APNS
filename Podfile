@@ -6,6 +6,6 @@ target 'APNS' do
   use_frameworks!
 
   # Pods for APNS
-  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
 
 end
