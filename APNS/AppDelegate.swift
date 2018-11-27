@@ -16,7 +16,6 @@
 
 import UIKit
 import UserNotifications
-
 import Firebase
 import FirebaseMessaging
 
@@ -128,23 +127,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo)
         
         // Change this to your preferred presentation option
-        completionHandler([.alert, .sound]) 
+        completionHandler([.alert, .sound])
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
-        let userInfo = response.notification.request.content.userInfo
-        // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
-        }
-        
-        // Print full message.
-        print(userInfo)
-        
-        completionHandler()
-    }
 }
 // [END ios_10_message_handling]
 
@@ -157,6 +142,8 @@ extension AppDelegate : MessagingDelegate {
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
+        
+        print(fcmToken)
     }
     // [END refresh_token]
     // [START ios_10_data_message]
